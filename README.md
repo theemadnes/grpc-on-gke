@@ -11,5 +11,15 @@ kubectl apply -f namespaces/
 kubectl apply -f gateway/
 
 # deploy backend service
-kubectl apply -k backend/
+kubectl apply -n gog-backend -k backend/
+
+# deploy frontend service
+kubectl apply -n gog-frontend -k frontend/
+
+# capture load balancer VIP
+export GATEWAY_IP=$(kubectl get gateway external-http -n gog-gateway -o jsonpath='{.status.addresses[0].value}')
+echo $GATEWAY_IP
+
+# call the endpoint
+grpcurl -plaintext -proto whereami.proto $GATEWAY_IP:80 whereami.Whereami.GetPayload
 ```

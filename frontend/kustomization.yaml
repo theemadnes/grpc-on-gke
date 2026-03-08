@@ -5,7 +5,7 @@ labels:
   pairs:
     app: whereami-grpc-frontend
 resources:
-- ../k8s-grpc
+- ../base
 patches:
 - path: cm-flag.yaml
   target:

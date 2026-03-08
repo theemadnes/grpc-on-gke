@@ -18,3 +18,9 @@ metadata:
   name: whereami-grpc
 spec:
   type: ClusterIP
+  ports:
+  - port: 9090
+    protocol: TCP
+    targetPort: 9090
+    name: grpc
+    appProtocol: kubernetes.io/h2c # using HTT2 cleartext over TCP
