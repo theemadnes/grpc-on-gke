@@ -6,12 +6,12 @@ metadata:
 spec:
   parentRefs:
   - group: gateway.networking.k8s.io
-    sectionName: http
+    sectionName: https
     name: external-http # Name of your GKE Gateway
     namespace: gog-gateway
     kind: Gateway
   #hostnames:
-  #  - "frontend.endpoints.e2m-private-test-01.cloud.goog" # replace with your hostname
+  #  - "gog.example" # replace with your hostname
   rules:
   - matches:
     - path:
